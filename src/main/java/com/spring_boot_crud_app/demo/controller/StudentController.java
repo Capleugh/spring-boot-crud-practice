@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,7 +49,27 @@ public class StudentController {
             path = "{studentId}"
     )
 
-    public Student getStudentById(@PathVariable("studentId") UUID studentId) {
+    public Student getStudent(@PathVariable("studentId") UUID studentId) {
         return  studentService.getStudentById(studentId);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            path = "{studentId}"
+    )
+
+    public void updateStudent(@PathVariable("studentId") UUID studentId, @RequestBody Student studentUpdate) {
+        studentService.updateStudentById(studentId, studentUpdate);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            path = "{studentId}"
+    )
+
+    public void deleteStudent(@PathVariable("studentId") UUID studentId) {
+        studentService.deleteStudentById(studentId);
     }
 }
