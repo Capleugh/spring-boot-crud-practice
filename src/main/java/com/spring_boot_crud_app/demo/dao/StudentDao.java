@@ -7,13 +7,13 @@ import java.util.UUID;
 
 public interface StudentDao {
 
-    void insertNewStudent(UUID studentId, Student student);
+    int insertNewStudent(UUID studentId, Student student);
 
     Student selectStudentById(UUID studentId);
 
     List<Student> selectAllStudents();
 
-    int updateStudentById(UUID studentId, Student newStudent);
+    int updateStudentById(UUID studentId, Student studentUpdate);
 
     int deleteStudentById(UUID studentId);
 }
