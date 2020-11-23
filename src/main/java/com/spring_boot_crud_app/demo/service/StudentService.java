@@ -2,6 +2,8 @@ package com.spring_boot_crud_app.demo.service;
 
 import com.spring_boot_crud_app.demo.dao.StudentDao;
 import com.spring_boot_crud_app.demo.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,7 +12,12 @@ public class StudentService {
 
     private final StudentDao studentDao;
 
-    public StudentService(StudentDao studentDao) {
+    @Autowired
+//    this annotation allows us to wire our @Repository to our service layer
+    public StudentService(@Qualifier("fakeDao") StudentDao studentDao) {
+//        the @Qualifier annotation allows us to wire up the specific @Repository we want to use
+//        only necessary if there are multiple implementations of our Dao interface, so we could get away with
+//        not using it here.
         this.studentDao = studentDao;
     }
 

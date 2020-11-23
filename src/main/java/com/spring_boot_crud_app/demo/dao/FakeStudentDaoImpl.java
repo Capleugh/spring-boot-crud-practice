@@ -1,9 +1,19 @@
 package com.spring_boot_crud_app.demo.dao;
 
 import com.spring_boot_crud_app.demo.model.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("fakeDao")
+// @Component is an annotation that allows us to us create an instance of FakeStudentDaoImpl
+// but this annotation can be used anywhere
+
+// spring allows us to distinguish between the classes that we have
+// this class serves as a data access point for our database
+// @Repository lets any client for this database know that this is a repository
+// if we have multiple implementations of StudentDao, we distinguish between them by passing a value to @Repository
+//
 public class FakeStudentDaoImpl implements StudentDao {
 
     private final Map<UUID, Student> database;
