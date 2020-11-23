@@ -16,7 +16,7 @@ public class StudentService {
 
     @Autowired
 //    this annotation allows us to wire our @Repository to our service layer
-    public StudentService(@Qualifier("fakeDao") StudentDao studentDao) {
+    public StudentService(@Qualifier("mongoDBDao") StudentDao studentDao) {
 //        the @Qualifier annotation allows us to wire up the specific @Repository we want to use
 //        only necessary if there are multiple implementations of our Dao interface, so we could get away with
 //        not using it here.
