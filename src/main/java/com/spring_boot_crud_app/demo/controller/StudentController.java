@@ -29,6 +29,7 @@ public class StudentController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
+
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
@@ -41,5 +42,15 @@ public class StudentController {
     public void insertNewStudent(@RequestBody Student student) {
         studentService.persistNewStudent(UUID.randomUUID(), student);
 
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            path = "{studentId}"
+    )
+
+    public Student getStudentById(@PathVariable("studentId") UUID studentId) {
+        return  studentService.getStudentById(studentId);
     }
 }
