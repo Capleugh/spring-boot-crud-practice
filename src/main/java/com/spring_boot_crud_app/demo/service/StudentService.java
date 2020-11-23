@@ -4,10 +4,12 @@ import com.spring_boot_crud_app.demo.dao.StudentDao;
 import com.spring_boot_crud_app.demo.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class StudentService {
 
     private final StudentDao studentDao;
