@@ -5,13 +5,11 @@ import com.spring_boot_crud_app.demo.model.Student;
 import com.spring_boot_crud_app.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 // this annotation indicates that this class will serve as a RESTful API that we can hit
@@ -33,5 +31,15 @@ public class StudentController {
     )
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+
+    public void insertNewStudent(@RequestBody Student student) {
+        studentService.persistNewStudent(UUID.randomUUID(), student);
+
     }
 }
